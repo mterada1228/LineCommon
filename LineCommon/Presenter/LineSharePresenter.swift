@@ -12,7 +12,6 @@ import UIKit
 protocol LineSharePresenterInput {
     func didTapLineTextShareBtn()
     func didTapLineImageShareBtn(image: UIImage)
-    func didTapLineImageAndTextShareBtn(image: UIImage)
 }
 
 protocol LineSharePresenterOutput: AnyObject {
@@ -49,7 +48,7 @@ final class LineSharePresenter : LineSharePresenterInput {
                     } else {
                         UIApplication.shared.openURL(url)
                     }
-                }else {
+                } else {
                     // LINEアプリが無い場合
                     let alertController = UIAlertController(title: "エラー",
                                                             message: "LINEがインストールされていません",
@@ -65,8 +64,6 @@ final class LineSharePresenter : LineSharePresenterInput {
     
     // 画像をLineにShareする
     func didTapLineImageShareBtn(image: UIImage) {
-    
-        let message  = "iPhone"
         
         // Lineに画像をシェアする
         lineShareModel.sendImage(image: image) { [weak self] result in
@@ -93,38 +90,6 @@ final class LineSharePresenter : LineSharePresenterInput {
             }
         }
     }
-    
-    // 画像をLineにShareする
-    func didTapLineImageAndTextShareBtn(image: UIImage) {
-        
-        let message = "testMessage"
-        
-        // Lineに画像をシェアする
-        lineShareModel.sendImageAndText(message: message, image: image){ [weak self] result in
-            switch result {
-            case .success(let url) :
-                if UIApplication.shared.canOpenURL(url) {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: { (succes) in
-                            //  LINEアプリ表示成功
-                        })
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                }else {
-                    // LINEアプリが無い場合
-                    let alertController = UIAlertController(title: "エラー",
-                                                            message: "LINEがインストールされていません",
-                                                            preferredStyle: UIAlertController.Style.alert)
-                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
-                    self?.view.showAlert(alertController)
-                }
-            case .failure(let error) :
-                print(error)
-            }
-        }
-    }
-    
 }
 
 
