@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Result<T,Error> {
     case success(T)
@@ -17,11 +18,14 @@ protocol LineShareModelInput {
     // Lineにテキストメッセージをシェアする
     func sendMessage(message: String,
                      completion: @escaping (Result<URL, String>) -> ())
+    // Lineに画像をシェアする
+    func sendImage(image: UIImage,
+                   completion: @escaping (Result<URL, String>) -> ())
 }
 
 final class LineShareModel: LineShareModelInput {
     
-    // 送信用URLを作成する
+    // テキスト送信用URLを作成する
     func sendMessage(message: String,
                      completion: @escaping (Result<URL, String>) -> ()) {
         
@@ -41,5 +45,19 @@ final class LineShareModel: LineShareModelInput {
         }
         
         completion(.success(url))
+    }
+    
+    // 画像送信用URLを作成する
+    func sendImage(image: UIImage,
+                   completion: @escaping (Result<URL, String>) -> ()) {
+        
+        let pasteBoard = UIPasteboard.general
+        pasteBoard.image = image
+        
+        let lineSchemeImage: String = "line://msg/image/%@"
+        let scheme = String(format: lineSchemeImage, pasteBoard.name as CVarArg)
+        let messageURL: URL! = URL(string: scheme)
+        
+        completion(.success(messageURL))
     }
 }

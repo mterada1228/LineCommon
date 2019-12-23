@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jD-fu-nSV">
-                                <rect key="frame" x="169.5" y="488" width="75" height="30"/>
-                                <state key="normal" title="Lineで送る"/>
+                                <rect key="frame" x="131.5" y="488" width="151" height="30"/>
+                                <state key="normal" title="Lineでテキストを送る"/>
                                 <connections>
-                                    <action selector="lineShareBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3kQ-AM-CZO"/>
+                                    <action selector="lineTextShareBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WgD-zi-zuB"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="terada_kokoro" translatesAutoresizingMaskIntoConstraints="NO" id="LH6-AW-de5">
@@ -29,10 +29,19 @@
                                     <constraint firstAttribute="height" constant="374" id="eNh-7k-lYp"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2Z-ld-E0q">
+                                <rect key="frame" x="146.5" y="568" width="121" height="30"/>
+                                <state key="normal" title="Lineで画像を送る"/>
+                                <connections>
+                                    <action selector="lineImageShareBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fb9-9F-SQe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LH6-AW-de5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="TNL-Rs-sZd"/>
+                            <constraint firstItem="b2Z-ld-E0q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e8M-pf-Mhv"/>
+                            <constraint firstItem="b2Z-ld-E0q" firstAttribute="top" secondItem="5jD-fu-nSV" secondAttribute="bottom" constant="50" id="rDk-s4-ecv"/>
                             <constraint firstItem="5jD-fu-nSV" firstAttribute="top" secondItem="LH6-AW-de5" secondAttribute="bottom" constant="50" id="rbF-4S-a97"/>
                             <constraint firstItem="LH6-AW-de5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z09-Hd-Fcw"/>
                             <constraint firstItem="5jD-fu-nSV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zwy-5D-MNK"/>

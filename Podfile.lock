@@ -1,0 +1,16 @@
+PODS:
+  - LINEActivity (0.2.0)
+
+DEPENDENCIES:
+  - LINEActivity (~> 0.2.0)
+
+SPEC REPOS:
+  trunk:
+    - LINEActivity
+
+SPEC CHECKSUMS:
+  LINEActivity: 3cf844b075bc7f8338ea86b41bd46acd5ec934d8
+
+PODFILE CHECKSUM: 1a0f2d6b1f365f04ea173cb68bdcf9973f8624bf
+
+COCOAPODS: 1.8.4

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LINEActivity
 
 // presenter output
 extension LineShareViewController: LineSharePresenterOutput {
@@ -16,7 +17,7 @@ extension LineShareViewController: LineSharePresenterOutput {
 }
 
 class LineShareViewController: UIViewController {
-
+    
     // Injecting presenterInput
     private var presenter: LineSharePresenterInput!
     func inject(presenter: LineSharePresenterInput){
@@ -32,8 +33,14 @@ class LineShareViewController: UIViewController {
     
     @IBOutlet weak var ImageView: UIImageView!
     
-    @IBAction func lineShareBtn(_ sender: Any) {
-        presenter.didTapLineShareBtn()
+    // TextのShare
+    @IBAction func lineTextShareBtn(_ sender: Any) {
+        presenter.didTapLineTextShareBtn()
+    }
+    
+    // ImageのShare
+    @IBAction func lineImageShareBtn(_ sender: Any) {
+        presenter.didTapLineImageShareBtn(image: ImageView.image!)
     }
 
 }
